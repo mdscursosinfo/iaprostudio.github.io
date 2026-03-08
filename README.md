@@ -1272,7 +1272,7 @@
          BOTÕES FLUTUANTES DE CONTATO
          ============================================ -->
     <div class="floating-buttons">
-        <a href="https://wa.me/5511999999999" target="_blank" class="floating-btn whatsapp" data-label="Contato para dúvidas">
+        <a href="https://wa.me/5581994367201" target="_blank" class="floating-btn whatsapp" data-label="Contato para dúvidas">
             <i class="fab fa-whatsapp"></i>
         </a>
         <a href="https://instagram.com/mds.cursos" target="_blank" class="floating-btn instagram" data-label="Contato para dúvidas">
