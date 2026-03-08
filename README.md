@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA PRO STUDIO - MDS Cursos | Criação Profissional com Inteligência Artificial</title>
+    <meta name="description" content="Aprenda a criar imagens, vídeos e conteúdos incríveis usando Inteligência Artificial mesmo começando do zero.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: {
+                            DEFAULT: '#00ff88',
+                            dark: '#00cc6a',
+                            light: '#66ffb3',
+                            glow: 'rgba(0, 255, 136, 0.5)'
+                        },
+                        dark: {
+                            DEFAULT: '#0a0a0a',
+                            light: '#121212',
+                            lighter: '#1a1a1a',
+                            card: '#141414'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s ease-in-out infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'shimmer': 'shimmer 2s linear infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards'
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(0, 255, 136, 0.5), 0 0 40px rgba(0, 255, 136, 0.3)' },
+                            '50%': { boxShadow: '0 0 30px rgba(0, 255, 136, 0.8), 0 0 60px rgba(0, 255, 136, 0.5)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-200% 0' },
+                            '100%': { backgroundPosition: '200% 0' }
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* ============================================
+           IA PRO STUDIO - MDS Cursos
+           Estilos Personalizados
+           ============================================ */
+        
+        /* Reset e Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        /* Scrollbar Personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #00ff88;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00cc6a;
+        }
+        
+        /* Efeito de Grid de Fundo */
+        .bg-grid {
+            background-image: 
+                linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        /* Efeito de Partículas */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00ff88;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: particleFloat 15s infinite;
+        }
+        
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Botão Neon Glow */
+        .btn-neon {
+            position: relative;
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: #0a0a0a;
+            font-weight: 700;
+            padding: 16px 40px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+        }
+        
+        .btn-neon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn-neon:hover::before {
+            left: 100%;
+        }
+        
+        .btn-neon:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 10px 30px rgba(0, 255, 136, 0.4),
+                0 0 60px rgba(0, 255, 136, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-neon-outline {
+            background: transparent;
+            color: #00ff88;
+            border: 2px solid #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
+        }
+        
+        .btn-neon-outline:hover {
+            background: #00ff88;
+            color: #0a0a0a;
+            box-shadow: 
+                0 10px 30px rgba(0, 255, 136, 0.5),
+                0 0 60px rgba(0, 255, 136, 0.4);
+        }
+        
+        /* Cards com Efeito Glassmorphism */
+        .glass-card {
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            border-radius: 16px;
+            transition: all 0.4s ease;
+        }
+        
+        .glass-card:hover {
+            border-color: rgba(0, 255, 136, 0.5);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 136, 0.2),
+                inset 0 0 30px rgba(0, 255, 136, 0.05);
+            transform: translateY(-5px);
+        }
+        
+        /* Ícones Neon */
+        .icon-neon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2) 0%, rgba(0, 255, 136, 0.05) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #00ff88;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .glass-card:hover .icon-neon {
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            color: #0a0a0a;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+        }
+        
+        /* Texto Gradiente */
+        .text-gradient {
+            background: linear-gradient(135deg, #00ff88 0%, #66ffb3 50%, #00ff88 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Linha Neon Decorativa */
+        .neon-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #00ff88, transparent);
+            width: 100%;
+        }
+        
+        /* Badge */
+        .badge-neon {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 50px;
+            color: #00ff88;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Botões Flutuantes de Contato */
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .floating-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .floating-btn.whatsapp {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        }
+        
+        .floating-btn.instagram {
+            background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        
+        .floating-btn::after {
+            content: attr(data-label);
+            position: absolute;
+            right: 70px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+        
+        .floating-btn:hover::after {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Depoimentos */
+        .testimonial-card {
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.9) 0%, rgba(26, 26, 26, 0.9) 100%);
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s ease;
+        }
+        
+        .testimonial-card:hover {
+            border-color: rgba(0, 255, 136, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 255, 136, 0.15);
+        }
+        
+        .testimonial-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid #00ff88;
+            object-fit: cover;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+        
+        /* Garantia */
+        .guarantee-badge {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #0a0a0a;
+            font-weight: 800;
+            text-align: center;
+            box-shadow: 
+                0 0 40px rgba(0, 255, 136, 0.5),
+                inset 0 0 20px rgba(255, 255, 255, 0.3);
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        
+        /* Lista de Benefícios */
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: rgba(0, 255, 136, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 255, 136, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-item:hover {
+            background: rgba(0, 255, 136, 0.1);
+            border-color: rgba(0, 255, 136, 0.3);
+            transform: translateX(10px);
+        }
+        
+        .benefit-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #00ff88 0%, #00cc6a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0a0a0a;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        
+        /* Animação de Entrada */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Efeito de Brilho no Título */
+        .glow-text {
+            text-shadow: 
+                0 0 10px rgba(0, 255, 136, 0.5),
+                0 0 20px rgba(0, 255, 136, 0.3),
+                0 0 30px rgba(0, 255, 136, 0.2);
+        }
+        
+        /* Seção Hero */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: auto;
+                padding: 100px 0;
+            }
+            
+            .floating-buttons {
+                right: 15px;
+                bottom: 15px;
+            }
+            
+            .floating-btn {
+                width: 48px;
+                height: 48px;
+                font-size: 20px;
+            }
+            
+            .floating-btn::after {
+                display: none;
+            }
+            
+            .btn-neon {
+                padding: 14px 28px;
+                font-size: 12px;
+            }
+        }
+        
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loading-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid rgba(0, 255, 136, 0.1);
+            border-top-color: #00ff88;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-dark bg-grid">
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading">
+        <div class="loading-spinner"></div>
+    </div>
+    
+    <!-- Partículas de Fundo -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- ============================================
+         SEÇÃO 1: HERO
+         ============================================ -->
+    <section class="hero-section" id="hero">
+        <div class="hero-bg-glow"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <!-- Badge -->
+                <div class="reveal mb-6">
+                    <span class="badge-neon">
+                        <i class="fas fa-robot mr-2"></i>MDS Cursos Apresenta
+                    </span>
+                </div>
+                
+                <!-- Título Principal -->
+                <h1 class="reveal text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight" style="transition-delay: 0.1s;">
+                    <span class="text-white">IA PRO</span>
+                    <span class="text-gradient glow-text"> STUDIO</span>
+                </h1>
+                
+                <!-- Subtítulo -->
+                <p class="reveal text-xl sm:text-2xl md:text-3xl text-gray-300 font-light mb-4" style="transition-delay: 0.2s;">
+                    Criação Profissional de Fotos e Vídeos com Inteligência Artificial
+                </p>
+                
+                <!-- Descrição -->
+                <p class="reveal text-base sm:text-lg text-gray-400 mb-10 max-w-2xl mx-auto" style="transition-delay: 0.3s;">
+                    Aprenda a criar imagens, vídeos e conteúdos incríveis usando Inteligência Artificial mesmo começando do zero.
+                </p>
+                
+                <!-- Botões CTA -->
+                <div class="reveal flex flex-col sm:flex-row gap-4 justify-center items-center" style="transition-delay: 0.4s;">
+                    <a href="#oferta" class="btn-neon w-full sm:w-auto">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Quero garantir minha vaga
+                    </a>
+                    <a href="#oferta" class="btn-neon btn-neon-outline w-full sm:w-auto">
+                        <i class="fas fa-shopping-cart mr-2"></i>
+                        Comprar agora e garantir a oferta
+                    </a>
+                </div>
+                
+                <!-- Scroll Indicator -->
+                <div class="reveal mt-16 animate-bounce" style="transition-delay: 0.6s;">
+                    <a href="#problema" class="text-neon text-2xl hover:text-neon-light transition-colors">
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO 2: PROBLEMA
+         ============================================ -->
+    <section class="py-20 sm:py-32 relative" id="problema">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="reveal text-center mb-12">
+                    <span class="badge-neon mb-4 inline-block">O Problema</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+                        Você se identifica com <span class="text-gradient">isso?</span>
+                    </h2>
+                </div>
+                
+                <div class="reveal glass-card p-8 sm:p-12">
+                    <p class="text-gray-300 text-lg mb-8 text-center">
+                        Muitas pessoas querem trabalhar com internet, criação de conteúdo ou redes sociais, mas não sabem:
+                    </p>
+                    
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-dark-lighter/50">
+                            <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-times text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Criar imagens profissionais</h4>
+                                <p class="text-gray-400 text-sm">Não sabe usar Photoshop ou ferramentas complexas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-dark-lighter/50">
+                            <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-times text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Produzir vídeos</h4>
+                                <p class="text-gray-400 text-sm">Edição parece complicada e demorada</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-dark-lighter/50">
+                            <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-times text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Usar Inteligência Artificial</h4>
+                                <p class="text-gray-400 text-sm">Não entende como aproveitar o poder da IA</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-dark-lighter/50">
+                            <div class="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-times text-red-500"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Monetizar habilidades</h4>
+                                <p class="text-gray-400 text-sm">Não sabe como ganhar dinheiro com criação de conteúdo</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 rounded-xl bg-gradient-to-r from-neon/10 to-transparent border border-neon/30">
+                        <p class="text-center text-white text-lg">
+                            <i class="fas fa-lightbulb text-neon mr-2"></i>
+                            O <strong class="text-neon">IA PRO STUDIO</strong> resolve todos esses problemas de forma simples e prática!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO 3: O QUE O ALUNO VAI APRENDER
+         ============================================ -->
+    <section class="py-20 sm:py-32 relative" id="conteudo">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal text-center mb-16">
+                <span class="badge-neon mb-4 inline-block">Conteúdo do Curso</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+                    O que você vai <span class="text-gradient">aprender</span>?
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Um método completo e passo a passo para dominar a criação de conteúdo com IA
+                </p>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Card 1 -->
+                <div class="reveal glass-card p-8">
+                    <div class="icon-neon mb-6">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Criação de Imagens com IA</h3>
+                    <p class="text-gray-400">Aprenda a gerar imagens profissionais e realistas usando ferramentas de Inteligência Artificial.</p>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="reveal glass-card p-8" style="transition-delay: 0.1s;">
+                    <div class="icon-neon mb-6">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Criação de Vídeos com IA</h3>
+                    <p class="text-gray-400">Produza vídeos automáticos e profissionais sem precisar de equipamentos caros.</p>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="reveal glass-card p-8" style="transition-delay: 0.2s;">
+                    <div class="icon-neon mb-6">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Artes para Redes Sociais</h3>
+                    <p class="text-gray-400">Crie posts, stories e artes incríveis para Instagram, Facebook e outras plataformas.</p>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="reveal glass-card p-8" style="transition-delay: 0.3s;">
+                    <div class="icon-neon mb-6">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Edição Profissional de Fotos</h3>
+                    <p class="text-gray-400">Edite fotos como um profissional usando IA para retoque e aprimoramento.</p>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="reveal glass-card p-8" style="transition-delay: 0.4s;">
+                    <div class="icon-neon mb-6">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Criação de Conteúdo Viral</h3>
+                    <p class="text-gray-400">Aprenda técnicas para criar conteúdo que engaja e viraliza nas redes sociais.</p>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="reveal glass-card p-8" style="transition-delay: 0.5s;">
+                    <div class="icon-neon mb-6">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Ferramentas de IA Profissionais</h3>
+                    <p class="text-gray-400">Domine as mesmas ferramentas de IA usadas por grandes produtores de conteúdo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO 4: SOBRE O CURSO
+         ============================================ -->
+    <section class="py-20 sm:py-32 relative" id="sobre">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="reveal">
+                        <span class="badge-neon mb-4 inline-block">Sobre o Curso</span>
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+                            100% <span class="text-gradient">Prático</span> e Direto ao Ponto
+                        </h2>
+                        <p class="text-gray-300 text-lg mb-8">
+                            Nosso método foi desenvolvido para que você aprenda de forma rápida e eficiente, sem enrolação. Cada aula é focada em resultados práticos que você pode aplicar imediatamente.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-neon/20 flex items-center justify-center">
+                                    <i class="fas fa-check text-neon"></i>
+                                </div>
+                                <span class="text-white">Criar imagens profissionais com IA</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-neon/20 flex items-center justify-center">
+                                    <i class="fas fa-check text-neon"></i>
+                                </div>
+                                <span class="text-white">Criar vídeos automáticos</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-neon/20 flex items-center justify-center">
+                                    <i class="fas fa-check text-neon"></i>
+                                </div>
+                                <span class="text-white">Criar posts para Instagram</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-neon/20 flex items-center justify-center">
+                                    <i class="fas fa-check text-neon"></i>
+                                </div>
+                                <span class="text-white">Criar artes para empresas</span>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-full bg-neon/20 flex items-center justify-center">
+                                    <i class="fas fa-check text-neon"></i>
+                                </div>
+                                <span class="text-white">Trabalhar como freelancer</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reveal relative" style="transition-delay: 0.2s;">
+                        <div class="absolute inset-0 bg-gradient-to-r from-neon/20 to-transparent rounded-3xl blur-3xl"></div>
+                        <div class="relative glass-card p-8 sm:p-12">
+                            <div class="text-center">
+                                <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-neon to-neon-dark flex items-center justify-center">
+                                    <i class="fas fa-graduation-cap text-4xl text-dark"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white mb-4">MDS Cursos</h3>
+                                <p class="text-gray-400 mb-6">
+                                    Escola especializada em cursos de tecnologia e inovação, com foco em resultados práticos e mercado de trabalho.
+                                </p>
+                                <div class="grid grid-cols-3 gap-4 pt-6 border-t border-gray-800">
+                                    <div>
+                                        <div class="text-2xl font-bold text-neon">200+</div>
+                                        <div class="text-sm text-gray-500">Alunos</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl font-bold text-neon">50+</div>
+                                        <div class="text-sm text-gray-500">Aulas</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-2xl font-bold text-neon">4.9</div>
+                                        <div class="text-sm text-gray-500">Avaliação</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO 5: IA PRO STUDIO DESTAQUE
+         ============================================ -->
+    <section class="py-20 sm:py-32 relative overflow-hidden" id="destaque">
+        <div class="absolute inset-0 bg-gradient-to-b from-neon/5 via-transparent to-neon/5"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <div class="reveal">
+                    <span class="badge-neon mb-4 inline-block">Destaque</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8">
+                        O que é o <span class="text-gradient glow-text">IA PRO STUDIO</span>?
+                    </h2>
+                </div>
+                
+                <div class="reveal glass-card p-8 sm:p-12 lg:p-16" style="transition-delay: 0.2s;">
+                    <p class="text-xl sm:text-2xl text-gray-300 mb-8 leading-relaxed">
+                        IA PRO STUDIO é um <strong class="text-neon">treinamento completo</strong> onde você aprende a usar Inteligência Artificial para criar <strong class="text-white">fotos, vídeos e conteúdos profissionais</strong>.
+                    </p>
+                    
+                    <div class="neon-line mb-8"></div>
+                    
+                    <p class="text-lg text-gray-400 mb-8">
+                        <i class="fas fa-star text-neon mr-2"></i>
+                        Mesmo quem <strong class="text-white">nunca trabalhou com edição</strong> consegue aprender e começar a criar conteúdos incríveis em poucos dias!
+                    </p>
+                    
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-neon/10 border border-neon/30">
+                            <i class="fas fa-infinity text-neon"></i>
+                            <span class="text-white text-sm">Acesso Vitalício</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-neon/10 border border-neon/30">
+                            <i class="fas fa-mobile-alt text-neon"></i>
+                            <span class="text-white text-sm">Acesso em Qualquer Dispositivo</span>
+                        </div>
+                        <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-neon/10 border border-neon/30">
+                            <i class="fas fa-sync text-neon"></i>
+                            <span class="text-white text-sm">Conteúdo Atualizado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO 6: PARA QUEM É O CURSO
+         ============================================ -->
+    <section class="py-20 sm:py-32 relative" id="publico">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal text-center mb-16">
+                <span class="badge-neon mb-4 inline-block">Público-Alvo</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+                    Para quem é este <span class="text-gradient">curso</span>?
+                </h2>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <!-- Item 1 -->
+                <div class="reveal glass-card p-6 flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neon/30 to-neon/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-seedling text-2xl text-neon"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold">Iniciantes</h4>
+                        <p class="text-gray-400 text-sm">Quem está começando do zero</p>
+                    </div>
+                </div>
+                
+                <!-- Item 2 -->
+                <div class="reveal glass-card p-6 flex items-center gap-4" style="transition-delay: 0.1s;">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neon/30 to-neon/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-camera text-2xl text-neon"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold">Criadores de Conteúdo</h4>
+                        <p class="text-gray-400 text-sm">Influencers e produtores de conteúdo</p>
+                    </div>
+                </div>
+                
+                <!-- Item 3 -->
+                <div class="reveal glass-card p-6 flex items-center gap-4" style="transition-delay: 0.2s;">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neon/30 to-neon/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-briefcase text-2xl text-neon"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold">Empreendedores</h4>
+                        <p class="text-gray-400 text-sm">Donos de negócios e empresários</p>
+                    </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="reveal glass-card p-6 flex items-center gap-4" style="transition-delay: 0.3s;">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neon/30 to-neon/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-user-graduate text-2xl text-neon"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold">Estudantes</h4>
+                        <p class="text-gray-400 text-sm">Quem quer aprender uma nova habilidade</p>
+                    </div>
+                </div>
+                
+                <!-- Item 5 -->
+                <div class="reveal glass-card p-6 flex items-center gap-4 sm:col-span-2 lg:col-span-2" style="transition-delay: 0.4s;">
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-neon/30 to-neon/10 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-dollar-sign text-2xl text-neon"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-bold">Pessoas que querem ganhar dinheiro online</h4>
+                        <p class="text-gray-400 text-sm">Quem deseja trabalhar de casa e ter uma renda extra ou principal criando conteúdo com IA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO 7: BENEFÍCIOS
+         ============================================ -->
+    <section class="py-20 sm:py-32 relative" id="beneficios">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="reveal text-center mb-12">
+                    <span class="badge-neon mb-4 inline-block">Benefícios</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+                        Por que escolher o <span class="text-gradient">IA PRO STUDIO</span>?
+                    </h2>
+                </div>
+                
+                <div class="reveal space-y-4">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Aprenda do Zero</h4>
+                            <p class="text-gray-400">Não precisa de experiência prévia. Comece do absoluto zero e vá até o avançado.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Ferramentas Profissionais</h4>
+                            <p class="text-gray-400">Use as mesmas ferramentas que os grandes produtores de conteúdo utilizam.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Conteúdo Atualizado</h4>
+                            <p class="text-gray-400">Material sempre atualizado com as últimas novidades do mundo da IA.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Método Simples e Prático</h4>
+                            <p class="text-gray-400">Aulas diretas, sem enrolação. Aprenda de forma rápida e eficiente.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold text-lg">Possibilidade de Renda Extra</h4>
+                            <p class="text-gray-400">Aprenda a monetizar suas habilidades e ganhar dinheiro criando conteúdo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO 8: PROVA SOCIAL (DEPOIMENTOS)
+         ============================================ -->
+    <section class="py-20 sm:py-32 relative" id="depoimentos">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal text-center mb-16">
+                <span class="badge-neon mb-4 inline-block">Prova Social</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+                    O que nossos <span class="text-gradient">alunos</span> dizem
+                </h2>
+            </div>
+            
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                <!-- Depoimento 1 -->
+                <div class="reveal testimonial-card">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face" alt="Ana Silva" class="testimonial-avatar">
+                        <div>
+                            <h4 class="text-white font-bold">Ana Silva</h4>
+                            <p class="text-neon text-sm">Criadora de Conteúdo</p>
+                        </div>
+                    </div>
+                    <div class="flex text-neon mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300">"O IA PRO STUDIO mudou minha vida! Consegui criar conteúdos profissionais para minhas redes sociais e tripliquei meus seguidores em apenas 2 meses."</p>
+                </div>
+                
+                <!-- Depoimento 2 -->
+                <div class="reveal testimonial-card" style="transition-delay: 0.1s;">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Carlos Mendes" class="testimonial-avatar">
+                        <div>
+                            <h4 class="text-white font-bold">Carlos Mendes</h4>
+                            <p class="text-neon text-sm">Empreendedor</p>
+                        </div>
+                    </div>
+                    <div class="flex text-neon mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300">"Consegui economizar milhares de reais com designer graças a esse curso. Agora crio todas as artes da minha empresa sozinho com IA."</p>
+                </div>
+                
+                <!-- Depoimento 3 -->
+                <div class="reveal testimonial-card" style="transition-delay: 0.2s;">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" alt="Juliana Costa" class="testimonial-avatar">
+                        <div>
+                            <h4 class="text-white font-bold">Juliana Costa</h4>
+                            <p class="text-neon text-sm">Freelancer</p>
+                        </div>
+                    </div>
+                    <div class="flex text-neon mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300">"Hoje trabalho como freelancer criando conteúdo com IA para vários clientes. O curso me deu todas as ferramentas que precisava para começar."</p>
+                </div>
+                
+                <!-- Depoimento 4 -->
+                <div class="reveal testimonial-card" style="transition-delay: 0.3s;">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" alt="Pedro Oliveira" class="testimonial-avatar">
+                        <div>
+                            <h4 class="text-white font-bold">Pedro Oliveira</h4>
+                            <p class="text-neon text-sm">Estudante</p>
+                        </div>
+                    </div>
+                    <div class="flex text-neon mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300">"Nunca imaginei que conseguiria criar conteúdos tão profissionais. O método é simples e os resultados são incríveis!"</p>
+                </div>
+                
+                <!-- Depoimento 5 -->
+                <div class="reveal testimonial-card" style="transition-delay: 0.4s;">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face" alt="Mariana Santos" class="testimonial-avatar">
+                        <div>
+                            <h4 class="text-white font-bold">Mariana Santos</h4>
+                            <p class="text-neon text-sm">Marketing Digital</p>
+                        </div>
+                    </div>
+                    <div class="flex text-neon mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300">"Uso as técnicas do curso todos os dias no meu trabalho de marketing. A produtividade aumentou muito e a qualidade dos materiais também."</p>
+                </div>
+                
+                <!-- Depoimento 6 -->
+                <div class="reveal testimonial-card" style="transition-delay: 0.5s;">
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" alt="Ricardo Lima" class="testimonial-avatar">
+                        <div>
+                            <h4 class="text-white font-bold">Ricardo Lima</h4>
+                            <p class="text-neon text-sm">Produtor de Conteúdo</p>
+                        </div>
+                    </div>
+                    <div class="flex text-neon mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300">"Melhor investimento que fiz no ano! O retorno foi quase imediato. Já recuperei o valor do curso nas primeiras semanas."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO 9: GARANTIA
+         ============================================ -->
+    <section class="py-20 sm:py-32 relative" id="garantia">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="reveal glass-card p-8 sm:p-12">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="flex-shrink-0">
+                            <div class="guarantee-badge">
+                                <span class="text-3xl">7</span>
+                                <span class="text-sm">DIAS</span>
+                            </div>
+                        </div>
+                        <div class="text-center md:text-left">
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white mb-4">
+                                Garantia Incondicional de <span class="text-gradient">7 Dias</span>
+                            </h3>
+                            <p class="text-gray-300 text-lg mb-4">
+                                Você tem <strong class="text-white">7 dias de garantia</strong> para testar o curso. Se por qualquer motivo não gostar do conteúdo, devolvemos <strong class="text-neon">100% do seu dinheiro</strong>. Sem perguntas, sem burocracia.
+                            </p>
+                            <p class="text-gray-400">
+                                <i class="fas fa-shield-alt text-neon mr-2"></i>
+                                Risco zero para você. Sua satisfação é garantida!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO 10: CHAMADA FINAL (OFERTA)
+         ============================================ -->
+    <section class="py-20 sm:py-32 relative overflow-hidden" id="oferta">
+        <div class="absolute inset-0 bg-gradient-to-t from-neon/10 via-transparent to-neon/5"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <div class="reveal">
+                    <span class="badge-neon mb-4 inline-block">Oferta Especial</span>
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                        Comece hoje mesmo a criar com <span class="text-gradient glow-text">Inteligência Artificial</span>
+                    </h2>
+                    <p class="text-gray-300 text-lg mb-10">
+                        Não perca mais tempo. Junte-se a milhares de alunos que já estão transformando suas vidas com o poder da IA.
+                    </p>
+                </div>
+                
+                <div class="reveal glass-card p-8 sm:p-12 mb-8" style="transition-delay: 0.2s;">
+                    <div class="mb-6">
+                        <span class="text-gray-400 line-through text-xl">De R$ 997,00</span>
+                        <div class="text-5xl sm:text-6xl font-black text-gradient my-4">
+                            R$ 297,00
+                        </div>
+                        <span class="text-neon text-sm">ou 12x de R$ 29,70 no cartão</span>
+                    </div>
+                    
+                    <div class="space-y-3 mb-8 text-left max-w-md mx-auto">
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-check-circle text-neon"></i>
+                            <span>Acesso vitalício ao curso</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-check-circle text-neon"></i>
+                            <span>+50 aulas em vídeo</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-check-circle text-neon"></i>
+                            <span>Material complementar</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-check-circle text-neon"></i>
+                            <span>Certificado de conclusão</span>
+                        </div>
+                        <div class="flex items-center gap-3 text-gray-300">
+                            <i class="fas fa-check-circle text-neon"></i>
+                            <span>Suporte ao aluno</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn-neon text-lg px-12 py-5 inline-block animate-pulse-glow" onclick="showComingSoon(event)">
+                        <i class="fas fa-shopping-cart mr-2"></i>
+                        Comprar agora e garantir a oferta
+                    </a>
+                    
+                    <p class="text-gray-500 text-sm mt-6">
+                        <i class="fas fa-lock mr-1"></i>
+                        Pagamento 100% seguro • Garantia de 7 dias
+                    </p>
+                </div>
+                
+                <div class="reveal flex justify-center gap-8" style="transition-delay: 0.4s;">
+                    <div class="text-center">
+                        <i class="fas fa-infinity text-3xl text-neon mb-2"></i>
+                        <p class="text-gray-400 text-sm">Acesso Vitalício</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-mobile-alt text-3xl text-neon mb-2"></i>
+                        <p class="text-gray-400 text-sm">Acesso em Qualquer Dispositivo</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-certificate text-3xl text-neon mb-2"></i>
+                        <p class="text-gray-400 text-sm">Certificado Incluso</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ============================================
+         SEÇÃO 11: RODAPÉ
+         ============================================ -->
+    <footer class="py-12 border-t border-gray-800 relative">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold text-white mb-2">MDS Cursos</h3>
+                    <p class="text-gray-400">Transformando vidas através da educação em tecnologia</p>
+                </div>
+                
+                <div class="flex justify-center gap-6 mb-8">
+                    <a href="https://wa.me/558199436-7201" target="_blank" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-neon hover:text-dark transition-all">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                    <a href="https://instagram.com/mds.cursos" target="_blank" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-neon hover:text-dark transition-all">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="mailto:mdscursosinfo@gmail.com" class="w-12 h-12 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-neon hover:text-dark transition-all">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+                
+                <div class="neon-line mb-8"></div>
+                
+                <div class="text-center text-gray-500 text-sm">
+                    <p>&copy; 2024 MDS Cursos. Todos os direitos reservados.</p>
+                    <p class="mt-2">
+                        <a href="#" class="hover:text-neon transition-colors">Termos de Uso</a> • 
+                        <a href="#" class="hover:text-neon transition-colors">Política de Privacidade</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- ============================================
+         BOTÕES FLUTUANTES DE CONTATO
+         ============================================ -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/5511999999999" target="_blank" class="floating-btn whatsapp" data-label="Contato para dúvidas">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://instagram.com/mds.cursos" target="_blank" class="floating-btn instagram" data-label="Contato para dúvidas">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+    
+    <!-- ============================================
+         JAVASCRIPT
+         ============================================ -->
+    <script>
+        // ============================================
+        // IA PRO STUDIO - JavaScript
+        // ============================================
+        
+        // Remover loading quando a página carregar
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading').classList.add('hidden');
+            }, 500);
+        });
+        
+        // ============================================
+        // Criar Partículas de Fundo
+        // ============================================
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        createParticles();
+        
+        // ============================================
+        // Animação de Scroll (Reveal)
+        // ============================================
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 100;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+        
+        // ============================================
+        // Navegação Suave
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+        
+        // ============================================
+        // Efeito de Parallax no Hero
+        // ============================================
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroGlow = document.querySelector('.hero-bg-glow');
+            if (heroGlow) {
+                heroGlow.style.transform = `translate(-50%, -50%) translateY(${scrolled * 0.3}px)`;
+            }
+        });
+        
+        // ============================================
+        // Mensagem "Em Breve" para botões de compra
+        // ============================================
+        function showComingSoon(event) {
+            event.preventDefault();
+            
+            // Criar modal
+            const modal = document.createElement('div');
+            modal.className = 'fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4';
+            modal.innerHTML = `
+                <div class="glass-card p-8 max-w-md w-full text-center animate-fade-in-up">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-neon/20 flex items-center justify-center">
+                        <i class="fas fa-clock text-3xl text-neon"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Em Breve!</h3>
+                    <p class="text-gray-300 mb-6">As matrículas para o IA PRO STUDIO estarão disponíveis em breve. Entre em contato conosco para mais informações.</p>
+                    <button onclick="this.closest('.fixed').remove()" class="btn-neon">
+                        Entendi
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Fechar ao clicar fora
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+        
+        // ============================================
+        // Efeito de Brilho no Mouse (Opcional)
+        // ============================================
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.querySelector('.cursor-glow');
+            if (!cursor) {
+                const newCursor = document.createElement('div');
+                newCursor.className = 'cursor-glow';
+                newCursor.style.cssText = `
+                    position: fixed;
+                    width: 300px;
+                    height: 300px;
+                    background: radial-gradient(circle, rgba(0, 255, 136, 0.08) 0%, transparent 70%);
+                    pointer-events: none;
+                    z-index: 0;
+                    transform: translate(-50%, -50%);
+                    transition: opacity 0.3s ease;
+                `;
+                document.body.appendChild(newCursor);
+            }
+            
+            const glow = document.querySelector('.cursor-glow');
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+        
+        // ============================================
+        // Contador de Urgência (Opcional)
+        // ============================================
+        function startCountdown() {
+            const countdownElement = document.createElement('div');
+            countdownElement.className = 'fixed top-0 left-0 right-0 bg-neon/10 backdrop-blur-md border-b border-neon/30 py-2 text-center z-40';
+            countdownElement.innerHTML = `
+                <span class="text-neon font-semibold text-sm">
+                    <i class="fas fa-fire mr-2"></i>
+                    Oferta por tempo limitado! 
+                    <span id="countdown" class="ml-2 font-bold"></span>
+                </span>
+            `;
+            
+            // Descomente a linha abaixo para ativar o contador
+            // document.body.insertBefore(countdownElement, document.body.firstChild);
+            
+            // Contador regressivo
+            let hours = 23, minutes = 59, seconds = 59;
+            const countdown = document.getElementById('countdown');
+            
+            if (countdown) {
+                setInterval(() => {
+                    seconds--;
+                    if (seconds < 0) {
+                        seconds = 59;
+                        minutes--;
+                    }
+                    if (minutes < 0) {
+                        minutes = 59;
+                        hours--;
+                    }
+                    if (hours < 0) {
+                        hours = 23;
+                    }
+                    
+                    countdown.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+                }, 1000);
+            }
+        }
+        
+        // startCountdown(); // Descomente para ativar
+        
+        // ============================================
+        // Console Message
+        // ============================================
+        console.log('%c IA PRO STUDIO ', 'background: linear-gradient(135deg, #00ff88, #00cc6a); color: #0a0a0a; font-size: 24px; font-weight: bold; padding: 10px 20px; border-radius: 10px;');
+        console.log('%c Desenvolvido por MDS Cursos ', 'color: #00ff88; font-size: 14px;');
+        console.log('%c © 2024 Todos os direitos reservados ', 'color: #666; font-size: 12px;');
+    </script>
+</body>
+</html>
